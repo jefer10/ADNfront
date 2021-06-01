@@ -8,6 +8,10 @@ import { ProductoModule } from '@producto/producto.module';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SharedModule} from '@shared/shared.module'
+import {HttpClientModule}from '@angular/common/http';
+import {PedidoModule}from'./feature/pedido/pedido.module';
+
 
 
 
@@ -21,8 +25,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     ProductoModule,
+    PedidoModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+    HttpClientModule
+
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

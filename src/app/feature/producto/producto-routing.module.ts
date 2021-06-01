@@ -9,15 +9,15 @@ import { ProductoComponent } from './components/producto/producto.component';
 const routes: Routes = [
   {
     path: '',
+    component: ListarProductoComponent
+  },
+  {
+    path: 'factory',
     component: ProductoComponent,
     children: [
       {
         path: 'crear',
         component: CrearProductoComponent
-      },
-      {
-        path: 'listar',
-        component: ListarProductoComponent
       },
       {
         path: 'borrar',

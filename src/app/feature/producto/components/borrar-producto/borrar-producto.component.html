@@ -1,1 +1,11 @@
-<p>borrar-producto works!</p>
+<p>borrar-producto works!UU</p>
+
+
+<div id="productos">
+    <ul class="productos">
+      <li *ngFor="let item of listaProductos | async">
+        <span>{{item.id}}</span> {{item.descripcion}}
+        <button (click)="borrar(item)">Eliminar producto</button>
+      </li>
+    </ul>
+  </div>

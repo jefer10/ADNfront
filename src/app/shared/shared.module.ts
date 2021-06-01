@@ -7,6 +7,9 @@ import { MensajeErrorCamposContenedorDirective } from './directivas/error-campos
 import { ErrorCamposPlantillaComponent } from './directivas/error-campos/componente/error-campos-plantilla.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TrackByPipe } from './pipe/track-by.pipe';
+import { FooterComponent}from'@shared/component/footer/footer.component';
+import {MaterialModule}from './material/material.module';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +17,9 @@ import { TrackByPipe } from './pipe/track-by.pipe';
     MensajeErrorCamposDirective,
     MensajeErrorCamposContenedorDirective,
     MensajeErrorCamposSubmitDirective,
-    TrackByPipe
+    TrackByPipe,
+    FooterComponent,
+    
   ],
   imports: [ReactiveFormsModule, FormsModule],
   exports: [
@@ -25,7 +30,9 @@ import { TrackByPipe } from './pipe/track-by.pipe';
     MensajeErrorCamposSubmitDirective,
     ReactiveFormsModule,
     FormsModule,
-    TrackByPipe
+    TrackByPipe,
+    FooterComponent,
+    MaterialModule
   ]
 })
 export class SharedModule { }

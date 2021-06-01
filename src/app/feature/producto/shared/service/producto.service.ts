@@ -10,11 +10,11 @@ export class ProductoService {
   constructor(protected http: HttpService) {}
 
   public consultar() {
-    return this.http.doGet<Producto[]>(`${environment.endpoint}/tiposFamilia`, this.http.optsName('consultar productos'));
+    return this.http.doGet<Producto[]>(`${environment.endpoint}/producto`, this.http.optsName('consultar productos'));
   }
 
   public guardar(producto: Producto) {
-    return this.http.doPost<Producto, boolean>(`${environment.endpoint}/productos`, producto,
+    return this.http.doPost<Producto, boolean>(`${environment.endpoint}/producto`, producto,
                                                 this.http.optsName('crear/actualizar productos'));
   }
 

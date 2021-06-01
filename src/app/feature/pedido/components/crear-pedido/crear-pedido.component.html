@@ -1,0 +1,73 @@
+<p>crear-pedido works!!</p>
+
+<label>lista de productos</label>
+<ul>
+    <li *ngFor="let producto of (productos$ |async)">
+        {{producto.nombre}}
+    </li>
+</ul>
+
+
+<div>
+    <label>fecha:{{fecha}}</label>
+    <p>valor de iva: {{valorIva}}</p>
+    <p id="valor">valor de productos:{{valorProductos}}</p>
+    <p>valor de envio: {{valorEnvio}}</p>
+    <p >valor total pedido:  {{valorTotal}}</p>
+
+</div>
+
+
+<form [formGroup]="productoForm"  (ngSubmit)="cerar()">
+    <div class="row">
+      <div class="col-sm-2">
+        <label>fecha:{{fecha}}</label> 
+      </div>
+      <div class="col-sm-4">
+        <input validar type="hidden" id="fecha" name="fecha" value="{{fecha}}" placeholder={{valorProductos}}
+          class="form-control" formControlName="fecha" >
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <label>clienteId:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="clienteId" name="Precio" value="{{valorTotal}}" placeholder="Precio producto"
+          class="form-control" formControlName="clienteId">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+          <label>iva: {{valorIva}}</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="hidden" id="ivaPedido" name="Precio" value={{valorIva}} placeholder="Precio producto"
+            class="form-control" formControlName="iva">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+          <label>valorEnvio:{{valorEnvio}}</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="hidden" id="valorPedido" name="Precio" value={{valorEnvio}} placeholder="Precio producto"
+            class="form-control" formControlName="valorEnvio">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+          <label>total:{{valorTotal}}</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="hidden" id="totalPedido" name="Precio" value={{valorTotal}} placeholder="Precio producto"
+            class="form-control" formControlName="total">
+        </div>
+    </div>
+    <button type="submit">crea pedido</button>
+</form>
+
+
+
+
+

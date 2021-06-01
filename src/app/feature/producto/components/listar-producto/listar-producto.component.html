@@ -1,8 +1,24 @@
 <p>listar-producto works!</p>
-<div id="productos">
+
+  <div id="productos">
   <ul class="productos">
-    <li *ngFor="let item of listaProductos | async">
-      <span>{{item.id}}</span> {{item.descripcion}}
+    <li *ngFor="let item of listaProductos | async;let indice=index">
+      <div>
+      <label>id:</label> <span>{{item.id}}</span>
+      </div>
+      <div>
+        <label>nombre:</label> <span>{{item.nombre}}</span>
+      </div>
+      <div>
+        <label>descripcion:</label> <span>{{item.descripcion}}</span>
+      </div>
+      <div>
+        <label>Precio:</label> <span>{{item.precio}}</span>
+      </div>
+     <span></span>
+     <button id={{indice}} (click)="addcart(item)" >comprar</button>
     </li>
   </ul>
 </div>
+<a routerLink='/factory'>factory</a>
+
