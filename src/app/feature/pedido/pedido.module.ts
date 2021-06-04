@@ -8,6 +8,7 @@ import {PedidoRoutingModule}from'./../pedido/pedido-routing.module';
 import { ActualizarPedidoComponent } from './components/actualizar-pedido/actualizar-pedido.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SharedModule}from '@shared/shared.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,6 @@ import {SharedModule}from '@shared/shared.module';
     SharedModule
 
   ],
-  providers:[PedidoService]
+  providers:[PedidoService, DatePipe]
 })
 export class PedidoModule { }

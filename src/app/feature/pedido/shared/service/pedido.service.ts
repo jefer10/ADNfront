@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '@core-service/http.service';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import{Pedido}from'../model/pedido';
 
@@ -15,8 +16,12 @@ export class PedidoService {
   }
 
   public guardar(pedido: Pedido) {
-    return this.http.doPost<Pedido, boolean>(`${environment.endpoint}/pedido`, pedido,
-                                                this.http.optsName('crear/actualizar pedido'));
+    let tt:Observable<boolean>;
+    tt=this.http.doPost<Pedido, boolean>(`${environment.endpoint}/pedido`, pedido,
+    this.http.optsName('crear pedido'));
+    console.log(tt);
+    console.log(`${environment.endpoint}/pedido`);
+    return tt;
   }
 
   public eliminar(pedido: Pedido) {

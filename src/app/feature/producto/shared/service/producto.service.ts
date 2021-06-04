@@ -14,12 +14,13 @@ export class ProductoService {
   }
 
   public guardar(producto: Producto) {
+    console.log(`${environment.endpoint}/producto`);
     return this.http.doPost<Producto, boolean>(`${environment.endpoint}/producto`, producto,
                                                 this.http.optsName('crear/actualizar productos'));
   }
 
   public eliminar(producto: Producto) {
-    return this.http.doDelete<boolean>(`${environment.endpoint}/productos/${producto.id}`,
+    return this.http.doDelete<boolean>(`${environment.endpoint}/producto/${producto.id}`,
                                                  this.http.optsName('eliminar productos'));
   }
 }

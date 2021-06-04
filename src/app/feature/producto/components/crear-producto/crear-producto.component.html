@@ -1,13 +1,13 @@
 <h1>Registrar Producto</h1>
-<h3>Ejemplo validacion de formularios reactivos con directiva</h3>
+
 <form [formGroup]="productoForm" (ngSubmit)="cerar()">
   <div class="row">
     <div class="col-sm-2">
-      <label>Id:</label>
+      <label>nombre del producto:</label>
     </div>
     <div class="col-sm-4">
-      <input validar type="text" id="idProducto" name="idProducto" placeholder="Id producto" class="form-control"
-        formControlName="id">
+      <input validar type="text" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+        formControlName="nombre">
     </div>
   </div>
   <div class="row">
@@ -25,7 +25,10 @@
     </div>
     <div class="col-sm-4">
       <input validar type="text" id="precioProducto" name="Precio" placeholder="Precio producto"
-        class="form-control" formControlName="descripcion">
+        class="form-control" formControlName="precio">
     </div>
+  </div>
+  <div>
+    <button type="submit">CREAR</button>
   </div>
 </form>

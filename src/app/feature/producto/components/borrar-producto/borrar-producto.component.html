@@ -1,11 +1,27 @@
 <p>borrar-producto works!UU</p>
 
+  <table mat-table [dataSource]="listaProductos" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+      <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef> Precio </th>
+      <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
+    </ng-container>
+    <ng-container matColumnDef="eliminar">
+      <th mat-header-cell *matHeaderCellDef> Eliminar </th>
+      <td mat-cell *matCellDef="let element"> <button  mat-raised-button color="warn" (click)="borrar(element)">Eliminar</button> </td>
+    </ng-container>
 
-<div id="productos">
-    <ul class="productos">
-      <li *ngFor="let item of listaProductos | async">
-        <span>{{item.id}}</span> {{item.descripcion}}
-        <button (click)="borrar(item)">Eliminar producto</button>
-      </li>
-    </ul>
-  </div>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

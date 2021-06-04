@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from '../../shared/service/producto.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
-const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
+
 
 @Component({
   selector: 'app-crear-producto',
@@ -12,22 +11,31 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
 })
 export class CrearProductoComponent implements OnInit {
   productoForm: FormGroup;
-  constructor(protected productoServices: ProductoService) { }
-
-  ngOnInit() {
+  constructor(protected productoServices: ProductoService,protected formBuilder: FormBuilder) { 
     this.construirFormularioProducto();
   }
 
+  ngOnInit() {
+    
+  }
+
   cerar() {
-    this.productoServices.guardar(this.productoForm.value);
+    console.log(this.productoForm.value);
+    this.productoServices.guardar(this.productoForm.value).subscribe(respuesta => {
+      console.log(respuesta);
+      console.log("yyyy");
+    });;
+    console.log("zzzz");
+    
   }
 
   private construirFormularioProducto() {
-    this.productoForm = new FormGroup({
-      id: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-                                                             Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)])
+    this.productoForm =this.formBuilder.group({
+      nombre:['',[Validators.required]],
+      descripcion:['',[Validators.required]],
+      precio:[0,[Validators.required]]
     });
   }
 
 }
+

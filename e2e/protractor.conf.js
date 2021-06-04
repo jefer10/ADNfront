@@ -16,6 +16,7 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome'
   },
+  //chromeDriver:'C:\\Users\\jefersson.rondon\\Documents\\proyecto\\frond-end\\pedido-frond\\angular-base\\node_modules\\protractor\\node_modules\\webdriver-manager\\selenium\\chromedriver_91.0.4472.19.exe","all":["C:\\Users\\jefersson.rondon\\Documents\\proyecto\\frond-end\\pedido-frond\\angular-base\\node_modules\\protractor\\node_modules\\webdriver-manager\\selenium\\chromedriver_90.0.4430.24.exe","C:\\Users\\jefersson.rondon\\Documents\\proyecto\\frond-end\\pedido-frond\\angular-base\\node_modules\\protractor\\node_modules\\webdriver-manager\\selenium\\chromedriver_90.0.4430.24',
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',

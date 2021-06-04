@@ -1,5 +1,5 @@
 <p>crear-pedido works!!</p>
-
+<!--
 <label>lista de productos</label>
 <ul>
     <li *ngFor="let producto of (productos$ |async)">
@@ -18,7 +18,9 @@
 </div>
 
 
-<form [formGroup]="productoForm"  (ngSubmit)="cerar()">
+
+
+<form [formControl]="pedidoField"  (ngSubmit)="cerar()">
     <div class="row">
       <div class="col-sm-2">
         <label>fecha:{{fecha}}</label> 
@@ -67,7 +69,70 @@
     <button type="submit">crea pedido</button>
 </form>
 
+-->
 
 
 
+
+
+<form [formGroup]="pedidoField" (ngSubmit)="crear()">
+  <mat-card-header>
+    <h1>ORDEN DE PEDIDO</h1>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="row">
+      <div class="col-xs">
+        <h2>fecha de creacion de pedido</h2>
+        <mat-form-field>  
+          <input matInput type="text" formControlName="fecha">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs">
+        <h2>numero de cliente:</h2>
+        <mat-form-field>  
+          <input matInput type="number" formControlName="clienteId">
+        </mat-form-field>
+      </div>
+    </div>
+    
+
+    <div class="row">
+      <div class="col-xs">
+        <h2>valor del iva</h2>
+        <mat-form-field>  
+          <input matInput type="number" formControlName="iva">
+        </mat-form-field>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-xs">
+        <h2>valor del envio</h2>
+        <mat-form-field>  
+          <input matInput type="number" formControlName="valorEnvio">    
+        </mat-form-field>
+      </div>
+    </div>
+
+    
+
+    <div class="row">
+      <div class="col-xs">
+        <h2>costo total del envio</h2>
+        <mat-form-field>  
+          <input matInput type="number" formControlName="total">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>  
+  <mat-card-actions>
+    <button mat-raised-button type="submit"  [disabled]="pedidoField.invalid">crear</button>
+  </mat-card-actions>
+</form>
 
