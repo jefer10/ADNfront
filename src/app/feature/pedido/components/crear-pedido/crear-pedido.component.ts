@@ -3,11 +3,9 @@ import {Producto}from'@producto/shared/model/producto';
 import {CartService}from'@core-service/cart.service';
 import {FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
-//import {ProductoService}from'./../../../producto/shared/service/producto.service';
 import { PedidoService }from'./../../shared/service/pedido.service';
 import { DatePipe}from'@angular/common';
-//import { HttpClient } from '@angular/common/http';
-//import { environment } from 'src/environments/environment';
+
 
 
 

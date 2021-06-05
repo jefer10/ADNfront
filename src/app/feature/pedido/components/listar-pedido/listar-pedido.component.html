@@ -1,1 +1,14 @@
 <p>listar-pedido works!</p>
+
+<label>lista de productos</label>
+<ul>
+    <li *ngFor="let pedido of (pedidos$ |async)">
+        <span> {{pedido.nombre}}</span>
+        <span>{{pedido.fecha}}</span>
+        <span>{{pedido.cliente}}</span>
+        <span>{{pedido.iva}}</span>
+        <span>{{pedido.valorEnvio}}</span>
+        <span>{{pedido.total}}</span>
+    </li>
+</ul>
+

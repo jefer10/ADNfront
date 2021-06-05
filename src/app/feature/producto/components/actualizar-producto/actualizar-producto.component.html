@@ -1,1 +1,83 @@
 <p>actualizar-producto works!</p>
+
+
+<p>productos</p>
+<table>
+    <div>
+        <tr>
+            <td>ID</td>
+            <td>NOMBRE</td>
+            <td>DESCRIPCION</td>
+            <td>PRECIO</td>
+            <td>ACTUALIZAR</td>
+        </tr>
+        <tr *ngFor="let producto of (listaProductos|async)">
+            <td>{{producto.id}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.precio}}</td>
+            <td><button (click)="formulario(producto)">actualizar</button></td>
+        </tr>
+    </div>
+</table>
+
+<div style="margin-top: 5%;" *ngIf="estado">
+    <h3>Producto</h3>
+<form [formGroup]=" productForm" (ngSubmit)="actualizar()"  >
+    <div class="row">
+        <div class="col-sm-2">
+          <label>id:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="number" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+            formControlName="id">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+          <label>nombre:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="text" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+            formControlName="nombre">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+          <label>descripcion:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="text" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+            formControlName="descripcion">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+          <label>precio:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="number" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+            formControlName="precio">
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">Guardar</button>
+      </div>
+
+</form>
+</div>
+
+<!--
+    <div id="productos">
+  <ul class="productos">
+    <li *ngFor="let item of listaProductos | async">
+      <span>{{item.id}}</span> {{item.descripcion}}
+    </li>
+  </ul>
+</div>
+-->
+

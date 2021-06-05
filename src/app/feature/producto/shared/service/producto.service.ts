@@ -18,6 +18,11 @@ export class ProductoService {
     return this.http.doPost<Producto, boolean>(`${environment.endpoint}/producto`, producto,
                                                 this.http.optsName('crear/actualizar productos'));
   }
+  public actualizar(producto: Producto) {
+    return this.http.doPut<Producto, boolean>(`${environment.endpoint}/producto/${producto.id}`, producto,
+                                                this.http.optsName('crear/actualizar productos'));
+  }
+
 
   public eliminar(producto: Producto) {
     return this.http.doDelete<boolean>(`${environment.endpoint}/producto/${producto.id}`,
