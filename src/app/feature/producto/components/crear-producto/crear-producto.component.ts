@@ -10,6 +10,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   
 })
 export class CrearProductoComponent implements OnInit {
+  
   productoForm: FormGroup;
   constructor(protected productoServices: ProductoService,protected formBuilder: FormBuilder) { 
     this.construirFormularioProducto();

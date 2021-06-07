@@ -1,1 +1,30 @@
 <p>crear-cliente works!</p>
+
+
+
+<form  [formGroup]="clienteForm" (ngSubmit)="cerar()">
+    <div class="row">
+      <div class="col-sm-2">
+        <label>nombre del cliente:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+          formControlName="nombre">
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-2">
+        <label>Dirreccion:</label>
+      </div>
+      <div class="col-sm-4">
+        <input validar type="text" id="descripcionProducto" name="descripcion" placeholder="Descripción producto"
+          class="form-control" formControlName="direccion">
+      </div>
+    </div>
+
+    <div>
+      <button type="submit">CREAR</button>
+    </div>
+  </form>
+  

@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SharedModule} from '@shared/shared.module'
 import {HttpClientModule}from '@angular/common/http';
 import {PedidoModule}from'./feature/pedido/pedido.module';
-
+import {ClienteModule}from './feature/cliente/cliente.module';
 
 
 
@@ -26,6 +26,7 @@ import {PedidoModule}from'./feature/pedido/pedido.module';
     AppRoutingModule,
     ProductoModule,
     PedidoModule,
+    ClienteModule,
     CoreModule,
     BrowserAnimationsModule,
     SharedModule,

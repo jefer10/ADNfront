@@ -1,0 +1,18 @@
+<p>listar-cliente works!</p>
+
+
+<div id="productos">
+    <ul class="productos">
+      <li *ngFor="let item of listaCliente | async;let indice=index">
+        <div>
+        <label>id:</label> <span>{{item.id}}</span>
+        </div>
+        <div>
+          <label>nombre:</label> <span>{{item.nombre}}</span>
+        </div>
+        <div>
+          <label>direccion:</label> <span>{{item.direccion}}</span>
+        </div>
+      </li>
+    </ul>
+</div>

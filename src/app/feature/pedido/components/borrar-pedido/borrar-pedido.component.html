@@ -1,1 +1,30 @@
 <p>borrar-pedido works!</p>
+
+<body>
+    <table  class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>clienteId</th>
+                <th>Valor del IVA</th>
+                <th>Valor del envio</th>
+                <th>valor total</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of (pedidos$|async);let indice=index" class="fila">
+                <th>{{pedido.id}}</th>
+                <th>{{pedido.fecha}}</th>
+                <th>{{pedido.clienteId}}</th>
+                <th>{{pedido.iva}}</th>
+                <th>{{pedido.valorEnvio}}</th>
+                <th>{{pedido.total}}</th>
+                <th><button id="indice" (click)="eliminar(pedido)">Eliminar</button></th>
+            </tr>
+        </tbody>                          
+        
+    </table>
+        
+</body>

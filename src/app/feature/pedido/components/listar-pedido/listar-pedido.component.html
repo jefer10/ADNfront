@@ -1,14 +1,30 @@
 <p>listar-pedido works!</p>
-
-<label>lista de productos</label>
-<ul>
-    <li *ngFor="let pedido of (pedidos$ |async)">
-        <span> {{pedido.nombre}}</span>
-        <span>{{pedido.fecha}}</span>
-        <span>{{pedido.cliente}}</span>
-        <span>{{pedido.iva}}</span>
-        <span>{{pedido.valorEnvio}}</span>
-        <span>{{pedido.total}}</span>
-    </li>
-</ul>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<label>lista de pedidos</label>
+<body>
+    <table  class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>clienteId</th>
+                <th>Valor del IVA</th>
+                <th>Valor del envio</th>
+                <th>valor total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of (pedidos$|async)" class="fila">
+                <th>{{pedido.id}}</th>
+                <th>{{pedido.fecha}}</th>
+                <th>{{pedido.clienteId}}</th>
+                <th>{{pedido.iva}}</th>
+                <th>{{pedido.valorEnvio}}</th>
+                <th>{{pedido.total}}</th>
+            </tr>
+        </tbody>
+        
+    </table>
+        
+</body>
 

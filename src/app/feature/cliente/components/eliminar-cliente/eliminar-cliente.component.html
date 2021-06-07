@@ -1,1 +1,19 @@
 <p>eliminar-cliente works!</p>
+
+
+<table>
+    <div>
+        <tr>
+            <td>ID</td>
+            <td>NOMBRE</td>
+            <td>DIRECCION</td>
+            <td>ACTUALIZAR</td>
+        </tr>
+        <tr *ngFor="let cliente of (listaCliente|async)">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.dirrecion}}</td>
+            <td><button (click)="borrar(cliente)">borrar</button></td>
+        </tr>
+    </div>
+</table>

@@ -1,1 +1,60 @@
 <p>actualizar-cliente works!</p>
+
+
+<p>productos</p>
+<table>
+    <div>
+        <tr>
+            <td>ID</td>
+            <td>NOMBRE</td>
+            <td>DIRECCION</td>
+            <td>ACTUALIZAR</td>
+        </tr>
+        <tr *ngFor="let cliente of (listaCliente|async)">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.dirrecion}}</td>
+            <td><button (click)="formulario(cliente)">actualizar</button></td>
+        </tr>
+    </div>
+</table>
+
+<div style="margin-top: 5%;" *ngIf="estado">
+    <h3>Producto</h3>
+<form [formGroup]="clienteForm" (ngSubmit)="actualizar()"  >
+    <div class="row">
+        <div class="col-sm-2">
+          <label>id:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="number" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+            formControlName="id">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+          <label>nombre:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="text" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+            formControlName="nombre">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+          <label>direccion:</label>
+        </div>
+        <div class="col-sm-4">
+          <input validar type="text" id="nombreProducto" name="idProducto" placeholder="nombre del producto" class="form-control"
+            formControlName="direccion">
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">Guardar</button>
+      </div>
+
+</form>
+</div>

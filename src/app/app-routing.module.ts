@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'pedido',
     loadChildren: ()=>import('./feature/pedido/pedido.module').then(mod=>mod.PedidoModule)
+  },
+  {
+    path:'cliente',
+    loadChildren:()=>import('./feature/cliente/cliente.module').then(mod=>mod.ClienteModule)
   }
   
 ];

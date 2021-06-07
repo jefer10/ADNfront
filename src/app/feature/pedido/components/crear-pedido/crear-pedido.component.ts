@@ -21,12 +21,13 @@ export class CrearPedidoComponent implements OnInit {
 
   pedidoField: FormGroup;
   productos$:Observable<Producto[]>;
+  cantidad:number=0;
   
   fecha:Date;
-  valorProductos:number;
-  valorTotal:number;
-  valorEnvio:number;
-  valorIva:number;
+  valorProductos:number=0;
+  valorTotal:number=0;
+  valorEnvio:number=0;
+  valorIva:number=0;
 
   constructor(private cartService:CartService,
               protected pedidoService:PedidoService,
@@ -37,9 +38,10 @@ export class CrearPedidoComponent implements OnInit {
                         this.valorProductos=0;
                         this.productos$=this.cartService.cart$;
                         this.cartService.cart$.subscribe(productos=>{
+                          this.cantidad=productos.length;
                           productos.map(producto1=>{
                             this.valorProductos=producto1.precio+this.valorProductos;
-                         });
+                         });                         
                        });
                        this.iniciarDatos();
                        this.construirFormularioPedido();
@@ -60,16 +62,16 @@ export class CrearPedidoComponent implements OnInit {
     });
 
     this.fecha=null;
-    this.valorProductos=null;
-    this.valorTotal=null;
-    this.valorEnvio=null;
-    this.valorIva=null;
+    this.valorProductos=0;
+    this.valorTotal=0;
+    this.valorEnvio=0;
+    this.valorIva=0;
   }
 
   private iniciarDatos(){
     this.fecha= new Date() ;
     this.valorIva=this.valorProductos*0.19;
-    if(this.valorProductos>200000){
+    if(this.valorProductos>200000 || this.cantidad===0){
       this.valorEnvio=0;
     }else{
       this.valorEnvio=77000;

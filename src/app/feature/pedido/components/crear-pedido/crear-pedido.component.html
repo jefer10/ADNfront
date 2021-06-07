@@ -17,62 +17,7 @@
 
 </div>
 
-
-
-
-<form [formControl]="pedidoField"  (ngSubmit)="cerar()">
-    <div class="row">
-      <div class="col-sm-2">
-        <label>fecha:{{fecha}}</label> 
-      </div>
-      <div class="col-sm-4">
-        <input validar type="hidden" id="fecha" name="fecha" value="{{fecha}}" placeholder={{valorProductos}}
-          class="form-control" formControlName="fecha" >
-    </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-2">
-        <label>clienteId:</label>
-      </div>
-      <div class="col-sm-4">
-        <input validar type="text" id="clienteId" name="Precio" value="{{valorTotal}}" placeholder="Precio producto"
-          class="form-control" formControlName="clienteId">
-      </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-          <label>iva: {{valorIva}}</label>
-        </div>
-        <div class="col-sm-4">
-          <input validar type="hidden" id="ivaPedido" name="Precio" value={{valorIva}} placeholder="Precio producto"
-            class="form-control" formControlName="iva">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-          <label>valorEnvio:{{valorEnvio}}</label>
-        </div>
-        <div class="col-sm-4">
-          <input validar type="hidden" id="valorPedido" name="Precio" value={{valorEnvio}} placeholder="Precio producto"
-            class="form-control" formControlName="valorEnvio">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-          <label>total:{{valorTotal}}</label>
-        </div>
-        <div class="col-sm-4">
-          <input validar type="hidden" id="totalPedido" name="Precio" value={{valorTotal}} placeholder="Precio producto"
-            class="form-control" formControlName="total">
-        </div>
-    </div>
-    <button type="submit">crea pedido</button>
-</form>
-
 -->
-
-
-
 
 
 <form [formGroup]="pedidoField" (ngSubmit)="crear()">
@@ -136,3 +81,4 @@
   </mat-card-actions>
 </form>
 
+<a routerLink='/order'>pedidos</a>
