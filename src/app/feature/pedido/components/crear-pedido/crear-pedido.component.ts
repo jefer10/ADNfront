@@ -5,6 +5,9 @@ import {FormBuilder, FormGroup , Validators} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PedidoService }from'./../../shared/service/pedido.service';
 import { DatePipe}from'@angular/common';
+import { PartialPedidoProducto } from '../../shared/model/partialPedidoProducto';
+import { Pedido } from '../../shared/model/pedido';
+
 
 
 
@@ -21,8 +24,13 @@ export class CrearPedidoComponent implements OnInit {
 
   pedidoField: FormGroup;
   productos$:Observable<Producto[]>;
+  listaDeProductos:Producto[]=[];
+  listaDePedido:Observable<Pedido[]>;
+  pedidoProducto:PartialPedidoProducto;
+  respuesta1:object;
+  idpedido=1;
+
   cantidad:number=0;
-  
   fecha:Date;
   valorProductos:number=0;
   valorTotal:number=0;
@@ -45,6 +53,9 @@ export class CrearPedidoComponent implements OnInit {
                        });
                        this.iniciarDatos();
                        this.construirFormularioPedido();
+                       this.listaDePedido=this.pedidoService.consultar();
+                       this.listaDePedido.subscribe(pedidos=>{this.idpedido= pedidos.length});
+                       
                       
   }
 
@@ -53,13 +64,13 @@ export class CrearPedidoComponent implements OnInit {
 
   //event:Event
   crear() {
-    //event.preventDefault();//para evitar que recargue la pagina
-    console.log(this.pedidoField.value);
-    //return this.http.post(`${environment.endpoint}/pedido}`,this.pedidoField.value);
-    this.pedidoService.guardar(this.pedidoField.value).subscribe(respuesta => {
-      console.log(respuesta);
-      console.log("yyyy");
-    });
+
+     this.pedidoService.guardar(this.pedidoField.value).subscribe(respuesta => {
+      console.log(respuesta['valor']);   
+    }); 
+    
+    this.enviarProductos();
+    
 
     this.fecha=null;
     this.valorProductos=0;
@@ -67,6 +78,40 @@ export class CrearPedidoComponent implements OnInit {
     this.valorEnvio=0;
     this.valorIva=0;
   }
+
+
+
+  enviarProductos(){
+
+    this.cartService.cart$.subscribe(productos=>{
+     productos.map(producto=>{
+       this.listaDeProductos=[...this.listaDeProductos,producto];
+     });
+    });
+    console.log(this.idpedido);
+    console.log(this.listaDeProductos);
+    this.idpedido=this.idpedido+1;
+    console.log(this.idpedido);
+    //setTimeout(function(){ ()=>{this.productosPedido();}  }, 500);
+    this.productosPedido();
+    
+  }
+
+ 
+  productosPedido(){
+    
+    for (let producto of this.listaDeProductos) {
+      console.log(this.idpedido);
+     this.pedidoProducto= new PartialPedidoProducto(this.idpedido,producto.id);
+     this.pedidoService.enlace(this.pedidoProducto).subscribe(respuesta=>{
+       console.log("ok");
+       console.log(respuesta);
+     });
+     console.log(producto);
+   }
+  }
+
+
 
   private iniciarDatos(){
     this.fecha= new Date() ;

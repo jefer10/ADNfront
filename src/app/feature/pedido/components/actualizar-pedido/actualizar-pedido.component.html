@@ -1,1 +1,127 @@
 <p>actualizar-pedido works!</p>
+
+<label>lista de pedidos</label>
+<body>
+
+    <table  class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>clienteId</th>
+                <th>Valor del IVA</th>
+                <th>Valor del envio</th>
+                <th>valor total</th>
+                <th>actualizar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of (pedidos$|async)" class="fila">
+                <th>{{pedido.id}}</th>
+                <th>{{pedido.fecha}}</th>
+                <th>{{pedido.clienteId}}</th>
+                <th>{{pedido.iva}}</th>
+                <th>{{pedido.valorEnvio}}</th>
+                <th>{{pedido.total}}</th>
+                <th><button (click)="mostarProductos(pedido)">actualizar</button></th>
+            </tr>
+        </tbody>
+        
+    </table>
+
+    <div id="productos" *ngIf="visible">
+
+        <ul class="productos">
+          <li *ngFor="let item of listaProductos | async;let indice=index">
+            <div>
+            <label>id:</label> <span>{{item.id}}</span>
+            </div>
+            <div>
+              <label>nombre:</label> <span>{{item.nombre}}</span>
+            </div>
+            <div>
+              <label>descripcion:</label> <span>{{item.descripcion}}</span>
+            </div>
+            <div>
+              <label>Precio:</label> <span>{{item.precio}}</span>
+            </div>
+           <span></span>
+           <button id={{indice}} (click)="eliminar(item)" >eliminar</button>
+          </li>
+        </ul>
+      </div>
+
+
+      <form [formGroup]="pedidoField" (ngSubmit)="guardar()" *ngIf="visible">
+        <mat-card-header>
+          <h1>ORDEN DE PEDIDO</h1>
+        </mat-card-header>
+        <mat-card-content>
+
+            <div class="row">
+                <div class="col-xs">
+                  <h2>id pedido</h2>
+                  <mat-form-field>  
+                    <input matInput type="number" formControlName="id">
+                  </mat-form-field>
+                </div>
+              </div>
+      
+          <div class="row">
+            <div class="col-xs">
+              <h2>fecha de creacion de pedido</h2>
+              <mat-form-field>  
+                <input matInput type="text" formControlName="fecha">
+              </mat-form-field>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-xs">
+              <h2>numero de cliente:</h2>
+              <mat-form-field>  
+                <input matInput type="number" formControlName="clienteId">
+              </mat-form-field>
+            </div>
+          </div>
+          
+      
+          <div class="row">
+            <div class="col-xs">
+              <h2>valor del iva</h2>
+              <mat-form-field>  
+                <input matInput type="number" formControlName="iva" placeholder="{{valorIva}}">
+              </mat-form-field>
+            </div>
+          </div>
+      
+      
+      
+          <div class="row">
+            <div class="col-xs">
+              <h2>valor del envio</h2>
+              <mat-form-field>  
+                <input matInput type="number" formControlName="valorEnvio" placeholder="{{valorEnvio}}">    
+              </mat-form-field>
+            </div>
+          </div>
+      
+          
+      
+          <div class="row">
+            <div class="col-xs">
+              <h2>costo total del envio</h2>
+              <mat-form-field>  
+                <input matInput type="number" formControlName="total" placeholder="{{valorTotal}}">
+              </mat-form-field>
+            </div>
+          </div>
+
+        </mat-card-content>  
+        <mat-card-actions>
+          <button mat-raised-button type="submit"  [disabled]="pedidoField.invalid">crear</button>
+        </mat-card-actions>
+      </form>
+
+        
+</body>

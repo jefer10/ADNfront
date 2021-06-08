@@ -28,4 +28,8 @@ export class ProductoService {
     return this.http.doDelete<boolean>(`${environment.endpoint}/producto/${producto.id}`,
                                                  this.http.optsName('eliminar productos'));
   }
+
+  public consultarProductos(idpedido:number) {
+    return this.http.doGet<Producto[]>(`${environment.endpoint}/producto/${idpedido}`, this.http.optsName('consultar productos por pedido'));
+  }
 }
